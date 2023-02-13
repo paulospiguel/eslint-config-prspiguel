@@ -21,16 +21,17 @@ module.exports = {
   plugins: [
     'react',
     'jsx-a11y',
+    "eslint-plugin-import-helpers",
     '@typescript-eslint'
   ],
   rules: {
     'prettier/prettier': ["error", {
       'printWidth': 80,
       'tabWidth': 2,
-      'singleQuote': true,
-      'trailingComma': 'all',
+      'singleQuote': false,
+      'trailingComma': 'none',
       'arrowParens': 'always',
-      'semi': false,
+      'semi': true,
       'endOfLine': 'auto',
     }],
     'react/react-in-jsx-scope': 'off',
@@ -47,6 +48,20 @@ module.exports = {
     'jsx-a11y/aria-unsupported-elements': 'warn',
     'jsx-a11y/role-has-required-aria-props': 'warn',
     'jsx-a11y/role-supports-aria-props': 'warn',
+     "import-helpers/order-imports": [
+      "warn",
+      {
+        "groups": [
+          "/^react/",
+          "/^next/",
+          "module",
+          "/^@/",
+          ["parent", "sibling", "index"]
+        ],
+        "newlinesBetween": "always", // new line between groups
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
   },
   settings: {
     react: {
